@@ -1,0 +1,760 @@
+{
+	"info": {
+		"_postman_id": "593f7828-a04e-4972-8f9e-fcef7d2c3ffc",
+		"name": "Demo_base_different_APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5430351",
+		"_collection_link": "https://shinkai-tester.postman.co/workspace/Team-Workspace~f2b37203-5c0d-458f-80ce-4a73f59be5b2/collection/5430351-593f7828-a04e-4972-8f9e-fcef7d2c3ffc?action=share&creator=5430351&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "1_Rick_Sanchez",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.test(\"Name is Rick Sanchez\", function () {\r",
+							"    pm.expect(jsonData.name).to.eql(\"Rick Sanchez\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 300ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(300);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://rickandmortyapi.com/api/character/1",
+					"protocol": "https",
+					"host": [
+						"rickandmortyapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"character",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2_Body_text",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body(\"Wife told me to take the spider out instead of killing it... We had some drinks, cool guy, wants to be a web developer.\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"web developer\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "text/plain",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://icanhazdadjoke.com/j/qjyszskjNCd",
+					"protocol": "https",
+					"host": [
+						"icanhazdadjoke",
+						"com"
+					],
+					"path": [
+						"j",
+						"qjyszskjNCd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3_Get_unknown",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"Not Found\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://rickandmortyapi.com/api/character/1000",
+					"protocol": "https",
+					"host": [
+						"rickandmortyapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"character",
+						"1000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4_Register_user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var responseBody = pm.response.json();\r",
+							"var requestBody = JSON.parse(pm.request.body);\r",
+							"\r",
+							"console.log(pm.response);\r",
+							"console.log(responseBody);\r",
+							"console.log(pm.request);\r",
+							"console.log(pm.request.body);\r",
+							"console.log(requestBody);\r",
+							"\r",
+							"pm.test(\"Check name in the response\", function () {\r",
+							"    pm.expect(responseBody.name).to.eql(requestBody.name);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Email includes 'testuser'\", function () {\r",
+							"    pm.expect(responseBody.email).to.include(\"testuser\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"testuser_{{$randomInt}}@example.com\",\r\n    \"name\": \"Userok{{$randomInt}}\",\r\n    \"password\": \"test123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://users.bugred.ru/tasks/rest/doregister",
+					"protocol": "http",
+					"host": [
+						"users",
+						"bugred",
+						"ru"
+					],
+					"path": [
+						"tasks",
+						"rest",
+						"doregister"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5_Rocket_aliases_array",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Array aliases includes 'Rocky Raccoon'\", function () {\r",
+							"    var aliases = response.results[0].biography.aliases;\r",
+							"    pm.expect(aliases).to.include(\"Rocky Raccoon\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://superheroapi.com/api/2342793375858243/search/Rocket",
+					"protocol": "https",
+					"host": [
+						"superheroapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"2342793375858243",
+						"search",
+						"Rocket"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6_Morthy_Smith_how_to_key_value",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response = pm.response.json();\r",
+							"\r",
+							"console.log(response['location']['name']);\r",
+							"\r",
+							"console.log(response.location.name);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://rickandmortyapi.com/api/character/2",
+					"protocol": "https",
+					"host": [
+						"rickandmortyapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"character",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7_Body_text_withBody",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body(\"Wife told me to take the spider out instead of killing it... We had some drinks, cool guy, wants to be a web developer.\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains a string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"web developer\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response should not be empty\", function () {\r",
+							"    pm.response.to.be.withBody;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "text/plain",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://icanhazdadjoke.com/j/qjyszskjNCd",
+					"protocol": "https",
+					"host": [
+						"icanhazdadjoke",
+						"com"
+					],
+					"path": [
+						"j",
+						"qjyszskjNCd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "8_Iron_Man_keys",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response = pm.response.json();\r",
+							"\r",
+							"\r",
+							"pm.test(\"There is a property name\", function () {\r",
+							"    pm.expect(response).to.have.property('name');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"There is a property name with 'Iron Man' value\", function () {\r",
+							"    pm.expect(response).to.have.property('name', 'Iron Man');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Type of the property 'name' is string\", function () {\r",
+							"    pm.expect(response).to.have.property('name').that.is.a('string');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Type of the property 'aliases' is array\", function () {\r",
+							"    pm.expect(response.biography).to.have.property('aliases').that.is.an('array');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"powerstats has all keys\", function () {\r",
+							"    pm.expect(response.powerstats).to.have.all.keys('intelligence', 'strength', 'speed', 'durability', 'power', 'combat');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"powerstats has any keys\", function () {\r",
+							"    pm.expect(response.powerstats).to.have.any.keys('intelligence', 'strength', 'speed', 'some other');\r",
+							"});\r",
+							"\r",
+							"console.log(Object.keys(response));\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://superheroapi.com/api/2342793375858243/346",
+					"protocol": "https",
+					"host": [
+						"superheroapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"2342793375858243",
+						"346"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "9_Get_user_full_types",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"response is an object\", function () {\r",
+							"    pm.expect(response).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"name is a string\", function () {\r",
+							"    pm.expect(response.name).to.be.a('string');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"id_task is a number\", function () {\r",
+							"    pm.expect(response.tasks[0].id_task).to.be.a('number');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"tasks is an array\", function () {\r",
+							"    pm.expect(response.tasks).to.be.an('array');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"tasks has property 'name' which is a string\", function () {\r",
+							"    pm.expect(response.tasks[0]).to.have.property('name').that.is.a('string');\r",
+							"});\r",
+							"\r",
+							"// Хочу использовать переменную на уровне коллекции в запросе 10_Search_user_array\r",
+							"pm.collectionVariables.set(\"userEmail\", 'childofthelight@mail.com')\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"/*\r",
+							"Преподготовка данных.\r",
+							"Сначала ищем юзера по email при помощи magicsearch. Если не находим, то создаём его с помощью createuserwithtasks\r",
+							"*/\r",
+							"\r",
+							"const searchForUser = {\r",
+							"  url: 'http://users.bugred.ru/tasks/rest/magicsearch',\r",
+							"  method: 'POST',\r",
+							"  body: {\r",
+							"    mode: 'raw',\r",
+							"    raw: JSON.stringify({ \r",
+							"        query: \"childofthelight@mail.com\"\r",
+							"    })\r",
+							"  }\r",
+							"};\r",
+							"\r",
+							"const createUser = {\r",
+							"  url: 'http://users.bugred.ru/tasks/rest/createuserwithtasks',\r",
+							"  method: 'POST',\r",
+							"  body: {\r",
+							"    mode: 'raw',\r",
+							"    raw: JSON.stringify({\r",
+							"    \"email\": \"childofthelight@mail.com\",\r",
+							"    \"name\": \"Аврора\",\r",
+							"    \"tasks\": [{\r",
+							"    \"title\": \"КАС1\",\r",
+							"    \"description\": \"Спасти Лемурию\"\r",
+							"    },\r",
+							"    {\r",
+							"    \"title\": \"КАС2\",\r",
+							"    \"description\": \"Вернуться домой\"\r",
+							"    }\r",
+							"    ],\r",
+							"    \"hobby\":\"играть на флейте\",\r",
+							"    \"adres\":\"Лемурия\",\r",
+							"    \"cat\":\"Игникулюс\",\r",
+							"    \"dog\":\"Финн\",\r",
+							"    \"parrot\":\"Джен\",\r",
+							"    \"hamster\":\"Роберт\",\r",
+							"    \"cavy\":\"Пухля\",\r",
+							"    \"squirrel\":\"Рубелла\",\r",
+							"    \"phone\":\"3056\",\r",
+							"    \"inn\":\"213333333331\",\r",
+							"    \"gender\":\"f\",\r",
+							"    \"birthday\":\"12.04.2000\",\r",
+							"    \"date_start\":\"01.01.2018\",\r",
+							"    \"name1\":\"Тест\",\r",
+							"    \"surname1\":\"Тестовая\",\r",
+							"    \"fathername1\":\"Тоже тест\"\r",
+							"    })\r",
+							"  }\r",
+							"};\r",
+							"\r",
+							"pm.sendRequest(searchForUser, function (err, res) {\r",
+							"    if (err) {\r",
+							"        console.log(err);\r",
+							"    } else if (res.json().foundCount === 1) {\r",
+							"        console.log(\"The test user exists\")\r",
+							"    } else if (res.json().foundCount === 0) {\r",
+							"        pm.sendRequest(createUser, function (err, res) {\r",
+							"            console.log(err ? err : \"Test user with email = \" + res.json().email + \" is created\");\r",
+							"        });\r",
+							"    }\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"childofthelight@mail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://users.bugred.ru/tasks/rest/getuserfull",
+					"protocol": "http",
+					"host": [
+						"users",
+						"bugred",
+						"ru"
+					],
+					"path": [
+						"tasks",
+						"rest",
+						"getuserfull"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "10_Search_user_array",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"results is not empty\", function () {\r",
+							"    pm.expect(response.results).to.be.an('array').that.is.not.empty;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"why_block has element with search by field and value (.to.deep.include)\", function () {\r",
+							"    pm.expect(response.results[0].why_block).to.deep.include(\r",
+							"                {\r",
+							"                    \"field\": \"email\",\r",
+							"                    \"value\": \"childofthelight@mail.com\"\r",
+							"                }\r",
+							"    );\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"tasks length is 2\", function () {\r",
+							"    pm.expect(response.results[0].tasks).to.have.lengthOf(2);\r",
+							"});\r",
+							"\r",
+							"// Чистим переменную на уровне коллекции, которую создали в 9_Get_user_full_types\r",
+							"pm.collectionVariables.unset(\"userEmail\");\r",
+							"\r",
+							"// Удаляем юзера с помощью sendRequest, он нам не нужен после запросов 9_Get_user_full_types и 10_Search_user_array\r",
+							"\r",
+							"const deleteUser = {\r",
+							"  url: 'http://users.bugred.ru/tasks/rest/deleteuser',\r",
+							"  method: 'POST',\r",
+							"  body: {\r",
+							"    mode: 'raw',\r",
+							"    raw: JSON.stringify({ \r",
+							"        email: \"childofthelight@mail.com\"\r",
+							"    })\r",
+							"  }\r",
+							"};\r",
+							"\r",
+							"pm.sendRequest(deleteUser, function (err, res) {\r",
+							"    console.log(err ? err : \"Test user is deleted\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "query",
+							"value": "{{userEmail}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://users.bugred.ru/tasks/rest/magicsearch",
+					"protocol": "http",
+					"host": [
+						"users",
+						"bugred",
+						"ru"
+					],
+					"path": [
+						"tasks",
+						"rest",
+						"magicsearch"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "11_Shop_create_item_string",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var responseBody = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check name is a string\", function () {\r",
+							"    pm.expect(responseBody.result.name).to.be.a('string');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"name includes Shura\", function () {\r",
+							"    pm.expect(responseBody.result.name).to.include('Shura');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"id (string) exist\", function () {\r",
+							"    pm.expect(responseBody.result.id).to.not.be.empty;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Shura_{{$randomProductName}}\",\r\n    \"section\":\"Верхняя одежда\",\r\n    \"description\":\"Красивая одежда\",\r\n    \"color\":\"Черный\",\r\n    \"size\": \"42,44,46,48\",\r\n    \"price\": {{$randomPrice}}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://shop.bugred.ru/api/items/create/",
+					"protocol": "http",
+					"host": [
+						"shop",
+						"bugred",
+						"ru"
+					],
+					"path": [
+						"api",
+						"items",
+						"create",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "12_Activity_number",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"participants is a number\", function () {\r",
+							"    pm.expect(jsonData.price).to.be.a('number');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"participants is not null\", function () {\r",
+							"    pm.expect(jsonData.participants).to.not.be.null;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"participants is equal or more than 1\", function () {\r",
+							"    pm.expect(jsonData.participants).be.at.least(1);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.boredapi.com/api/activity/",
+					"protocol": "https",
+					"host": [
+						"www",
+						"boredapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"activity",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,42 @@
+name: Test-Postman
+on: [push, workflow_dispatch]
+	 
+jobs:
+  test-api:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+
+      # Install Node.js on the runner
+      - name: Install Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "18.x"
+
+
+      # Install the newman command line utility and also install the html extra reporter
+      - name: Install newman
+        run:
+          npm install -g newman
+          npm install -g newman-reporter-htmlextra
+
+
+      # Make directory to upload the test results
+      - name: Make Directory for results
+        run: mkdir -p results
+
+
+      # Run the POSTMAN collection
+      - name: Run POSTMAN collection
+        run:
+          newman run Shop_final.json -e Shop_environment.json -r htmlextra,cli --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darkTheme  > testResults/output.txt
+
+
+      # Upload the contents of Test Results directory to workspace
+      - name: Output the run Details
+        uses: actions/upload-artifact@v2
+        with:
+          name: RunReports
+          path: testResults

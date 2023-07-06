@@ -1,0 +1,27 @@
+{
+	"id": "38ddbb61-ea08-4e87-8aa8-2b6f95ae55d7",
+	"name": "Shop",
+	"values": [
+		{
+			"key": "url",
+			"value": "http://shop.bugred.ru",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "ConnectionString",
+			"value": "Server=localhost;Database=shop_bugred_r_db;Uid=view_user;Pwd=ZQl3Ea1uhHTzzl3j;",
+			"type": "default",
+			"enabled": false
+		},
+		{
+			"key": "SqlAgentUrl",
+			"value": "https://46.36.217.134:8888/phpmyadmin/tbl_sql.php?db=shop_bugred_r_db&table=items",
+			"type": "default",
+			"enabled": false
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2023-07-05T23:35:31.202Z",
+	"_postman_exported_using": "Postman/10.15.6"
+}
