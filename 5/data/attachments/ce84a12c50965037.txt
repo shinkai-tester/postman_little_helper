@@ -1,0 +1,1 @@
+{"method":"/items/update","status":"ok","result":{"id":"86","name":"Gloves","section":"Категория 2","description":".1qSgk7ioey(ya)ppkF$i1.&lJZ<#gRcZXf_J$&TRNDOAaN-LfAM@UeZ<W3-nyUj","color":"Белый","size":"42","price":8066,"params":"","photo":"http://shop.bugred.ruhttps://via.placeholder.com/300x300"}}

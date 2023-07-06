@@ -1,0 +1,18 @@
+level: log, messages: [object Object]
+level: log, messages: [object Object]
+level: log, messages: [object Object]
+level: log, messages: [object Object]
+level: log, messages: [object Object]
+level: log, messages: [object Object]
+level: log, messages: [object Object]
+level: log, messages: [object Object]
+level: log, messages: [object Object]
+level: log, messages: Товар с ID 88 успешно удален
+level: log, messages: Товар с ID 87 успешно удален
+level: log, messages: Товар с ID 89 успешно удален
+level: log, messages: Товар с ID 90 успешно удален
+level: log, messages: Товар с ID 91 успешно удален
+level: log, messages: Товар с ID 92 успешно удален
+level: log, messages: Товар с ID 93 успешно удален
+level: log, messages: Товар с ID 94 успешно удален
+level: log, messages: Товар с ID 95 успешно удален
