@@ -20,6 +20,7 @@ jobs:
         run:
           npm install -g newman
           npm install -g newman-reporter-htmlextra
+          npm install -g newman-reporter-allure
 
 
       # Make directory to upload the test results
@@ -30,8 +31,7 @@ jobs:
       # Run the POSTMAN collection
       - name: Run POSTMAN collection
         run:
-          newman run Shop_final.json -e Shop_environment.json -r htmlextra,cli --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darkTheme  > testResults/output.txt
-
+          newman run Shop_final.json -e Shop_environment.json -r htmlextra,cli,allure --reporter-htmlextra-export testResults/htmlreport.html --reporter-allure-export testResults/allure-results > testResults/output.txt
 
       # Upload the contents of Test Results directory to workspace
       - name: Output the run Details
@@ -39,3 +39,28 @@ jobs:
         with:
           name: RunReports
           path: testResults
+      
+      # Download tests history
+      - uses: actions/checkout@v2
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
+          
+      # Generate Allure report
+      - uses: simple-elf/allure-report-action@master
+        if: always()
+        with:
+          gh_pages: gh-pages
+          allure_results: testResults/allure-results
+          allure_report: allure-report
+          allure_history: allure-history
+          
+      # Publish report
+      - uses: peaceiris/actions-gh-pages@v2
+        if: always()
+        env:
+          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: allure-history
