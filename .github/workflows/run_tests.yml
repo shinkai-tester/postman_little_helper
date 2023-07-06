@@ -24,7 +24,7 @@ jobs:
 
       # Make directory to upload the test results
       - name: Make Directory for results
-        run: mkdir -p results
+        run: mkdir -p testResults
 
 
       # Run the POSTMAN collection
