@@ -1,0 +1,6 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Fri Jul 07 10:05:50 GMT 2023","Fri Jul 07 10:05:51 GMT 2023","1173","","","","","","Create new item",""
+"passed","Fri Jul 07 10:05:51 GMT 2023","Fri Jul 07 10:05:52 GMT 2023","218","","","","","","Get item's info",""
+"passed","Fri Jul 07 10:05:52 GMT 2023","Fri Jul 07 10:05:52 GMT 2023","230","","","","","","Delete item",""
+"passed","Fri Jul 07 10:05:52 GMT 2023","Fri Jul 07 10:05:52 GMT 2023","430","","","","","","Update item",""
+"passed","Fri Jul 07 10:05:52 GMT 2023","Fri Jul 07 10:05:54 GMT 2023","2054","","","","","","Test search with creating and deleting data",""

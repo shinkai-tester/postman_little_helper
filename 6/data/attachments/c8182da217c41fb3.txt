@@ -1,0 +1,1 @@
+{"method":"/items/update","status":"ok","result":{"id":"599","name":"Bacon","section":"Категория 2","description":"Awesome","color":"RED","size":"44","price":8451,"params":"","photo":"http://shop.bugred.ruhttps://via.placeholder.com/300x300"}}
