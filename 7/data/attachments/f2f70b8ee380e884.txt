@@ -1,0 +1,1 @@
+{"method":"/items/create","status":"ok","result":{"id":"789","name":"Hat","section":"Брюки","description":"!N-%zv.$p&#HQh7&lzDkp-_)ct>N-§rVcw§&s95whZ6Xj1D#LrhELwJyLk_s7$MT","size":"42","color":"Синий","price":6551,"params":""}}
