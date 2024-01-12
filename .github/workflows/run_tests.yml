@@ -28,7 +28,7 @@ jobs:
         run: mkdir -p testResults
 
       - name: Execute Postman Collection
-        run: |
+        run:
           newman run Shop_final.json -e Shop_environment.json -r htmlextra,cli,allure --reporter-htmlextra-export testResults/htmlreport.html --reporter-allure-export testResults/allure-results > testResults/output.txt
 
       - name: Upload Test Results
