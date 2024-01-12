@@ -1,0 +1,6 @@
+level: log, messages: [object Object]
+level: log, messages: [object Object]
+level: log, messages: [object Object]
+level: log, messages: Товар с ID 208 успешно удален
+level: log, messages: Товар с ID 207 успешно удален
+level: log, messages: Товар с ID 209 успешно удален

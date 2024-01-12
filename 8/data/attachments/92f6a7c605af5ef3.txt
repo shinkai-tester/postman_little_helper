@@ -1,0 +1,1 @@
+{"method":"/items/create","status":"ok","result":{"id":"206","name":"Chips","section":"Категория 1","description":"z4XjSJtG<cbXaD~0dKVM!bJ4&SC!vv)wj(0*_#OtgaP6cMY~Ae6HWcznBAn§4l8I","size":"42","color":"BLUE","price":7446,"params":""}}
