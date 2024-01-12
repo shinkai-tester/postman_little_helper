@@ -1,64 +1,61 @@
-name: Test-Postman
-on: [push, workflow_dispatch]
+name: Shop Application API Testing
+
+on: 
+  push:
+  workflow_dispatch:
+
 jobs:
-  test-api:
+  run-shop-api-tests:
+    name: Execute Shop App API Tests
     runs-on: ubuntu-latest
+
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-
-      # Install Node.js on the runner
-      - name: Install Node
-        uses: actions/setup-node@v1
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v3
         with:
           node-version: "18.x"
 
-
-      # Install the newman command line utility and also install the html extra reporter
-      - name: Install newman
-        run:
+      - name: Install Newman and Reporters
+        run: |
           npm install -g newman
           npm install -g newman-reporter-htmlextra
           npm install -g newman-reporter-allure
 
-
-      # Make directory to upload the test results
-      - name: Make Directory for results
+      - name: Create Directory for Test Results
         run: mkdir -p testResults
 
-
-      # Run the POSTMAN collection
-      - name: Run POSTMAN collection
-        run:
+      - name: Execute Postman Collection
+        run: |
           newman run Shop_final.json -e Shop_environment.json -r htmlextra,cli,allure --reporter-htmlextra-export testResults/htmlreport.html --reporter-allure-export testResults/allure-results > testResults/output.txt
 
-      # Upload the contents of Test Results directory to workspace
-      - name: Output the run Details
-        uses: actions/upload-artifact@v2
+      - name: Upload Test Results
+        uses: actions/upload-artifact@v3
         with:
-          name: RunReports
+          name: Test Reports
           path: testResults
-      
-      # Download tests history
-      - uses: actions/checkout@v2
+
+      - name: Checkout Test History
+        uses: actions/checkout@v3
         if: always()
         continue-on-error: true
         with:
           ref: gh-pages
           path: gh-pages
-          
-      # Generate Allure report
-      - uses: simple-elf/allure-report-action@master
+
+      - name: Generate Allure Report
+        uses: simple-elf/allure-report-action@master
         if: always()
         with:
           gh_pages: gh-pages
           allure_results: testResults/allure-results
           allure_report: allure-report
           allure_history: allure-history
-          
-      # Publish report
-      - uses: peaceiris/actions-gh-pages@v2
+
+      - name: Publish Report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v2
         if: always()
         env:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
