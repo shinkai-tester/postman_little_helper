@@ -1,0 +1,1 @@
+{"method":"/items/delete/","status":"error","field_error":"id","error":"id_not_filled","message":"Поле ID товара  не заполнено"}
