@@ -1,0 +1,2 @@
+level: log, messages: [object Object]
+level: log, messages: Товар с ID 198 успешно удален

@@ -1,0 +1,1 @@
+{"method":"/items/update","status":"ok","result":{"id":"197","name":"Computer","section":"Футболки","description":"Incredible","color":"GREEN","size":"44","price":4874,"params":"","photo":"http://shop.bugred.ruhttps://via.placeholder.com/300x300"}}
