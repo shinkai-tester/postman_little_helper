@@ -1,0 +1,80 @@
+{
+	"info": {
+		"_postman_id": "7c8265ce-d61e-4364-b46e-2ff3f4caef23",
+		"name": "Users_SOAP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5430351",
+		"_collection_link": "https://shinkai-tester.postman.co/workspace/Team-Workspace~f2b37203-5c0d-458f-80ce-4a73f59be5b2/collection/5430351-7c8265ce-d61e-4364-b46e-2ff3f4caef23?action=share&source=collection_link&creator=5430351"
+	},
+	"item": [
+		{
+			"name": "Create User with tasks",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"name\", pm.variables.replaceIn(\"{{$randomFirstName}} {{$randomLastName}}\"));\r",
+							"pm.environment.set(\"email\", pm.variables.replaceIn(\"{{$randomUserName}}@example.com\"));\r",
+							"pm.environment.set(\"task\", pm.variables.replaceIn(\"Task {{$randomInt}}\"));\r",
+							"pm.environment.set(\"description\", pm.variables.replaceIn(\"{{$randomAdjective}}\"));"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const responseData = xml2Json(pm.response.text());\r",
+							"\r",
+							"console.log(responseData);\r",
+							"\r",
+							"var savedEmail = pm.environment.get(\"email\").toLowerCase();\r",
+							"pm.test(\"Check user email=\" + savedEmail, function () {\r",
+							"    var responseEmail = responseData['SOAP-ENV:Envelope']['SOAP-ENV:Body']['ns1:CreateUserWithTasksResponse']['return']['email']['_'];\r",
+							"    pm.expect(responseEmail).to.eql(savedEmail);\r",
+							"});\r",
+							"\r",
+							"pm.environment.unset(\"name\", pm.variables.replaceIn(\"{{$randomFirstName}} {{$randomLastName}}\"));\r",
+							"pm.environment.unset(\"email\", pm.variables.replaceIn(\"{{$randomUserName}}@example.com\"));\r",
+							"pm.environment.unset(\"task\", pm.variables.replaceIn(\"Task {{$randomInt}}\"));\r",
+							"pm.environment.unset(\"description\", pm.variables.replaceIn(\"{{$randomAdjective}}\"));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:wrap=\"http://foo.bar/wrappersoapserver\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <wrap:CreateUserWithTasks>\r\n         <email>{{email}}</email>\r\n         <name>{{name}}</name>\r\n         <tasks>\r\n         <task>\r\n          <task_title>{{task}}</task_title>\r\n          <task_description>{{description}}</task_description>\r\n          </task>\r\n         </tasks>\r\n      </wrap:CreateUserWithTasks>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/tasks/soap/WrapperSoapServer.php",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"tasks",
+						"soap",
+						"WrapperSoapServer.php"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
