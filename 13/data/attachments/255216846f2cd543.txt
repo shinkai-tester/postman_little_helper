@@ -1,0 +1,2 @@
+level: log, messages: http://shop.bugred.ru/api/items/get
+level: log, messages: {"id":245}
