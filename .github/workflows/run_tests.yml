@@ -1,63 +1,80 @@
-name: Shop Application API Testing
+name: Shop API Testing
 
-on: 
-  push:
+# Triggers for the workflow: push to main, pull request to main, manual trigger, and scheduled run at midnight UTC
+on:
+  # push:
+  #  branches: [ "main" ]
+  # pull_request:
+  #  branches: [ "main" ]
   workflow_dispatch:
+  # schedule:
+  #  - cron: '0 0 * * *'
 
 jobs:
   run-shop-api-tests:
-    name: Execute Shop App API Tests
-    runs-on: ubuntu-latest
+    name: Execute Shop app API Tests
+    runs-on: ubuntu-latest  # Specifies that the job runs on the latest Ubuntu runner
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
+      # Step 1: Checkout the repository content
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Setup Node.js Environment
-        uses: actions/setup-node@v3
+      # Step 2: Setup Node.js environment
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4
         with:
-          node-version: "18.x"
+          node-version: "20.x"
 
-      - name: Install Newman and Reporters
+      # Step 3: Install Newman, htlmextra and Allure reporters
+      - name: Install Newman and reporters
         run: |
           npm install -g newman
           npm install -g newman-reporter-htmlextra
           npm install -g newman-reporter-allure
-
-      - name: Create Directory for Test Results
-        run: mkdir -p testResults
-
-      - name: Execute Postman Collection
+          
+      # Step 4: Create directory for test results
+      - name: Create directory for test results
+        run: mkdir -p testResults # Creates a directory to store test results and artifacts
+        
+      # Step 5: Execute Postman collection
+      - name: Execute Shop_final collection
         run:
           newman run Shop_final.json -e Shop_environment.json -r htmlextra,cli,allure --reporter-htmlextra-export testResults/htmlreport.html --reporter-allure-export testResults/allure-results > testResults/output.txt
-
-      - name: Upload Test Results
-        uses: actions/upload-artifact@v3
+        continue-on-error: true # Allows the workflow to continue even if this step fails
+        
+      # Step 6: Upload test results
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: always() # Ensures this step always runs, regardless of previous step's success or failure
         with:
-          name: Test Reports
-          path: testResults
+          name: Test reports
+          path: testResults # Uploads the test results directory as an artifact
 
-      - name: Checkout Test History
-        uses: actions/checkout@v3
+      # Step 7: Checkout test history
+      - name: Get Allure history
+        uses: actions/checkout@v4
         if: always()
         continue-on-error: true
         with:
-          ref: gh-pages
+          ref: gh-pages # Checks out the gh-pages branch for deployment
           path: gh-pages
 
-      - name: Generate Allure Report
+      # Step 8: Generate Allure report
+      - name: Generate Allure report
         uses: simple-elf/allure-report-action@master
         if: always()
         with:
           gh_pages: gh-pages
-          allure_results: testResults/allure-results
+          allure_results: build/allure-results
           allure_report: allure-report
           allure_history: allure-history
 
-      - name: Publish Report to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v2
+      # Step 9: Publish report to GitHub Pages
+      - name: Deploy report to Github Pages
+        uses: peaceiris/actions-gh-pages@v4
         if: always()
-        env:
-          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }} # Uses the GitHub token to authenticate and publish to GitHub Pages
           PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: allure-history
+          PUBLISH_DIR: allure-report # Specifies the directory from which GitHub Pages should serve the site
