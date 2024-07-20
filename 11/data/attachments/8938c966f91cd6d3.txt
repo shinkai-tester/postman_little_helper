@@ -1,1 +1,0 @@
-{"method":"/items/update","status":"ok","result":{"id":"225","name":"Ball","section":"Категория 2","description":"Unbranded","color":"Фиолетовый","size":"44","price":8168,"params":"","photo":"http://shop.bugred.ruhttps://via.placeholder.com/300x300"}}

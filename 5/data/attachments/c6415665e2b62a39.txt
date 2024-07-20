@@ -1,1 +1,0 @@
-{"method":"/items/update","status":"ok","result":{"id":"86","name":"Fish","section":"Категория 2","description":"Intelligent","color":"Белый","size":"44","price":8066,"params":"","photo":"http://shop.bugred.ruhttps://via.placeholder.com/300x300"}}

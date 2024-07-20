@@ -1,1 +1,0 @@
-{"method":"/items/update","status":"ok","result":{"id":"599","name":"Tuna","section":"Категория 2","description":"Ef&_U6!!FUVh0aI1K3ly0BvfJXW7KeTl70>Dzpz)§Z!Go~Gr>k9ql6@§Ez7J4fdU","color":"RED","size":"42","price":8451,"params":"","photo":"http://shop.bugred.ruhttps://via.placeholder.com/300x300"}}

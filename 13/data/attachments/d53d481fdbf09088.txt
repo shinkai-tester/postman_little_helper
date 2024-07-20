@@ -1,1 +1,0 @@
-{"method":"/items/update","status":"ok","result":{"id":"245","name":"Towels","section":"Верхняя одежда","description":"Tasty","color":"Черный","size":"44","price":7874,"params":"","photo":"http://shop.bugred.ruhttps://via.placeholder.com/300x300"}}

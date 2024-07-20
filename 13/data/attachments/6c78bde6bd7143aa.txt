@@ -1,1 +1,0 @@
-{"method":"/items/create","status":"ok","result":{"id":"245","name":"Ball","section":"Верхняя одежда","description":"H!8sa7jG55vjTnCvg2A.QSbUD.).HWXv*uSuvLh>F1Ezj79mCyCLNZ%2pHK-GN&5","size":"42","color":"Черный","price":7874,"params":""}}

@@ -1,1 +1,0 @@
-{"method":"/items/update","status":"ok","result":{"id":"210","name":"Shoes","section":"Test","description":"Small","color":"BLUE","size":"44","price":8871,"params":"","photo":"http://shop.bugred.ruhttps://via.placeholder.com/300x300"}}

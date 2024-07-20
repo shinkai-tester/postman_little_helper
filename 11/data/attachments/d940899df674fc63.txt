@@ -1,1 +1,0 @@
-{"method":"/items/create","status":"ok","result":{"id":"225","name":"Shirt","section":"Категория 2","description":"o$isChpb%NsF3.qv7YHZN.ei~73~*@4HSoEA9bOhf2>#9->I0PmOybS>gE>XGd%I","size":"42","color":"Фиолетовый","price":8168,"params":""}}

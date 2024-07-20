@@ -1,1 +1,0 @@
-{"method":"/items/create","status":"ok","result":{"id":"599","name":"Tuna","section":"Категория 2","description":"Ef&_U6!!FUVh0aI1K3ly0BvfJXW7KeTl70>Dzpz)§Z!Go~Gr>k9ql6@§Ez7J4fdU","size":"42","color":"RED","price":8451,"params":""}}

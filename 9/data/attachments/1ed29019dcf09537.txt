@@ -1,1 +1,0 @@
-{"method":"/items/create","status":"ok","result":{"id":"210","name":"Car","section":"Test","description":"OYAmgK3wqsV4nlginDiL.3XnE(59.3jucK.#z!XFb6brr7USw*§x-xX3&UaXjna(","size":"42","color":"BLUE","price":8871,"params":""}}

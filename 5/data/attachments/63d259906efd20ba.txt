@@ -1,1 +1,0 @@
-{"method":"/items/delete","status":"ok","result":"Товар с ID 95 успешно удален"}
