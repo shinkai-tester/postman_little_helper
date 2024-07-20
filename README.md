@@ -1,2 +1,3 @@
 # Postman Little Helper
-Please see [Wiki](https://github.com/shinkai-tester/postman_little_helper/wiki) (RU).
+
+![Build Status](https://github.com/shinkai-tester/qa_auto_4_2_1/actions/workflows/run-api-tests.yml/badge.svg)
