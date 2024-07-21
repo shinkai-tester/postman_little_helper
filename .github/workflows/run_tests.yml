@@ -2,8 +2,8 @@ name: Shop API Testing
 
 # Triggers for the workflow: push to main, pull request to main, manual trigger, and scheduled run at midnight UTC
 on:
-  push:
-    branches: [ "main" ]
+  # push:
+  #  branches: [ "main" ]
   # pull_request:
   #  branches: [ "main" ]
   workflow_dispatch:
