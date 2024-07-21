@@ -1,0 +1,1 @@
+{"method":"/items/update","status":"ok","result":{"id":"715","name":"Computer","section":"Категория 1","description":"Handcrafted","color":"Фиолетовый","size":"44","price":4514,"params":"","photo":"http://shop.bugred.ruhttps://via.placeholder.com/300x300"}}

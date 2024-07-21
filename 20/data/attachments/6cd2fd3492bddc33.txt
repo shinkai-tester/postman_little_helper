@@ -1,0 +1,1 @@
+{"method":"/items/create","status":"ok","result":{"id":"715","name":"Pants","section":"Категория 1","description":">q><~VuTx)Ko#~Z0i!Zw§BD0kb7SJei1w&4H1vTv<D+Ug1q_P*§gHeeBASDUG4K!","size":"42","color":"Фиолетовый","price":4514,"params":""}}

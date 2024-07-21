@@ -1,0 +1,17 @@
+level: warn, messages: Using "_" is deprecated. Use "require('lodash')" instead.
+level: log, messages: [object Object]
+level: log, messages: [object Object]
+level: log, messages: [object Object]
+level: log, messages: [object Object]
+level: log, messages: [object Object]
+level: log, messages: [object Object]
+level: log, messages: [object Object]
+level: log, messages: [object Object]
+level: log, messages: Товар с ID 716 успешно удален
+level: log, messages: Товар с ID 717 успешно удален
+level: log, messages: Товар с ID 718 успешно удален
+level: log, messages: Товар с ID 720 успешно удален
+level: log, messages: Товар с ID 719 успешно удален
+level: log, messages: Товар с ID 721 успешно удален
+level: log, messages: Товар с ID 722 успешно удален
+level: log, messages: Товар с ID 723 успешно удален
