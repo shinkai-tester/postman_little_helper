@@ -1,1 +1,0 @@
-{"method":"/items/update","status":"ok","result":{"id":"707","name":"Hat","section":"Платья","description":"Gorgeous","color":"Синий","size":"44","price":1799,"params":"","photo":"http://shop.bugred.ruhttps://via.placeholder.com/300x300"}}

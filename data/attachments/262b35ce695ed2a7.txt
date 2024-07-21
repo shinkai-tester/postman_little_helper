@@ -1,1 +1,0 @@
-{"method":"/items/create","status":"ok","result":{"id":"707","name":"Chair","section":"Платья","description":"V2FSO&y(W5l44luq>vuu8Cw6LlXkl~sQGQ6ert06~87L9Bv(o§p85Odp7EZJ23$&","size":"42","color":"Синий","price":1799,"params":""}}

@@ -1,3 +1,0 @@
-level: warn, messages: Using "_" is deprecated. Use "require('lodash')" instead.
-level: warn, messages: Using "request" is deprecated. Use "pm.request" instead.
-level: warn, messages: Using "postman.setNextRequest" is deprecated. Use "pm.execution.setNextRequest()" instead.
