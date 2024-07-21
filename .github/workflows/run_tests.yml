@@ -48,6 +48,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always() # Ensures this step always runs, regardless of previous step's success or failure
         with:
+          name: testResults
           path: testResults # Uploads the test results directory as an artifact
 
       # Step 7: Checkout test history
