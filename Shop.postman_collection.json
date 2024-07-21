@@ -1,10 +1,9 @@
 {
 	"info": {
-		"_postman_id": "6fc9b42f-a31d-4d96-a8e9-2e084dabacb9",
-		"name": "Shop_final",
+		"_postman_id": "2bdfacfc-6539-40a8-9938-d9833a0e5987",
+		"name": "Shop",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "5430351",
-		"_collection_link": "https://shinkai-tester.postman.co/workspace/Team-Workspace~f2b37203-5c0d-458f-80ce-4a73f59be5b2/collection/5430351-6fc9b42f-a31d-4d96-a8e9-2e084dabacb9?action=share&creator=5430351&source=collection_link"
+		"_exporter_id": "5430351"
 	},
 	"item": [
 		{
@@ -14,6 +13,8 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
+							"const lodash = require('lodash');\r",
+							"\r",
 							"//создаем функцию-рандомайзер\r",
 							"const randomInteger = (min, max) => {\r",
 							"  let rand = min + Math.random() * (max + 1 - min);\r",
@@ -22,8 +23,8 @@
 							"\r",
 							"//создаем функцию для рандомного выбора из списка категорий и записи в переменную коллекции\r",
 							"const setSection = () => {\r",
-							"    const sectionList = ['Платья', 'Шорты', 'Верхняя одежда', 'Рубашки', 'Брюки', 'Футболки',  'Категория 1', 'Категория 2', 'Категория 3', 'Категория 4', 'Test', '\\(O_o)/'];\r",
-							"    const section = sectionList[_.random(0, sectionList.length-1)]\r",
+							"    const sectionList = ['\\＼(〇_ｏ)／'];\r",
+							"    const section = sectionList[lodash.random(0, sectionList.length-1)]\r",
 							"    pm.collectionVariables.set(\"section\", section);\r",
 							"}\r",
 							"\r",
@@ -87,7 +88,8 @@
 							"pm.collectionVariables.set(\"randomDescription\",generateDescription(64));\r",
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
@@ -182,16 +184,17 @@
 							"const Ajv = require('ajv');\r",
 							"ajv = new Ajv({logger: console});\r",
 							"\r",
-							"pm.test('Response in ' + request.name + ' matches the schema ItemInfoDto', function() {\r",
+							"pm.test('Response in ' + pm.request.name + ' matches the schema ItemInfoDto', function() {\r",
 							"  pm.expect(ajv.validate(createNewItemSchema, response)).to.be.true;\r",
 							"});\r",
 							"if (ajv.errors) {\r",
 							"    console.log(ajv.errors);\r",
 							"};\r",
 							"\r",
-							"postman.setNextRequest(\"Update item\");"
+							"pm.execution.setNextRequest(\"Update item\");"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -406,8 +409,10 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
+							"const lodash = require('lodash');\r",
+							"\r",
 							"// сколько товаров нужно сгенерировать (от 1 до 10)\r",
-							"var countItems = pm.environment.set('countItems', _.random(1,10));\r",
+							"pm.environment.set('countItems', lodash.random(1,10));\r",
 							"\r",
 							"// уникальная строка, по которой будем искать товары\r",
 							"var queryForSearch = \"ShurkaItem\" + Math.floor(Math.random() * 10000);\r",
@@ -456,7 +461,8 @@
 							"};\r",
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
@@ -564,7 +570,8 @@
 							"pm.environment.unset(\"prices\");\r",
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],

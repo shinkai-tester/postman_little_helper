@@ -1,10 +1,9 @@
 {
 	"info": {
-		"_postman_id": "8304a8e1-b326-434b-a553-3c465b816cb1",
-		"name": "Users_final",
+		"_postman_id": "3d85d34f-8a1f-4538-b7a5-e1e614c86b3d",
+		"name": "Users",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "5430351",
-		"_collection_link": "https://shinkai-tester.postman.co/workspace/Team-Workspace~f2b37203-5c0d-458f-80ce-4a73f59be5b2/collection/5430351-8304a8e1-b326-434b-a553-3c465b816cb1?action=share&creator=5430351&source=collection_link"
+		"_exporter_id": "5430351"
 	},
 	"item": [
 		{
@@ -142,14 +141,15 @@
 							"});\r",
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
 					"listen": "prerequest",
 					"script": {
 						"exec": [
-							"// https://testbase.atlassian.net/wiki/spaces/USERS/pages/592511089/SOAP+REST\r",
+							"const lodash = require('lodash');\r",
 							"\r",
 							"// Подготовка данных - запрос в переменной на регистрацию пользователя\r",
 							"var userName = pm.variables.replaceIn('{{$randomFullName}}');\r",
@@ -217,11 +217,11 @@
 							"});\r",
 							"\r",
 							"\r",
-							"pm.environment.set(\"hours\", _.random (1,23));\r",
-							"pm.environment.set(\"minutes\", _.random (0,59));\r",
-							"pm.environment.set(\"days\", _.random (1,28));\r",
-							"pm.environment.set(\"month\", _.random (1,12));\r",
-							"pm.environment.set(\"day_weeks\", _.random (1,6));\r",
+							"pm.environment.set(\"hours\", lodash.random (1,23));\r",
+							"pm.environment.set(\"minutes\", lodash.random (0,59));\r",
+							"pm.environment.set(\"days\", lodash.random (1,28));\r",
+							"pm.environment.set(\"month\", lodash.random (1,12));\r",
+							"pm.environment.set(\"day_weeks\", lodash.random (1,6));\r",
 							"\r",
 							"\r",
 							"pm.sendRequest('https://cdnjs.cloudflare.com/ajax/libs/later/1.2.0/later.min.js', (err, res) => {\r",
@@ -230,12 +230,13 @@
 							"later.date.localTime();\r",
 							"var cron = pm.environment.get(\"minutes\") + ' ' + pm.environment.get(\"hours\") + ' ' + pm.environment.get(\"days\") + ' ' + pm.environment.get(\"month\") + ' ' + pm.environment.get(\"day_weeks\");\r",
 							"var s = later.parse.cron(cron);\r",
-							"date_expected = later.schedule(s).next(1);\r",
+							"date_expected = later.schedule(s).next(0);\r",
 							"console.log(date_expected);\r",
 							"pm.environment.set(\"date_expected\", date_expected);\r",
 							"});"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],

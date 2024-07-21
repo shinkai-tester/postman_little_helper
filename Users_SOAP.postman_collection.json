@@ -1,10 +1,9 @@
 {
 	"info": {
-		"_postman_id": "7c8265ce-d61e-4364-b46e-2ff3f4caef23",
+		"_postman_id": "8f1e4c3e-14de-4d08-84ad-1bd580aa25e8",
 		"name": "Users_SOAP",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "5430351",
-		"_collection_link": "https://shinkai-tester.postman.co/workspace/Team-Workspace~f2b37203-5c0d-458f-80ce-4a73f59be5b2/collection/5430351-7c8265ce-d61e-4364-b46e-2ff3f4caef23?action=share&source=collection_link&creator=5430351"
+		"_exporter_id": "5430351"
 	},
 	"item": [
 		{
@@ -19,21 +18,26 @@
 							"pm.environment.set(\"task\", pm.variables.replaceIn(\"Task {{$randomInt}}\"));\r",
 							"pm.environment.set(\"description\", pm.variables.replaceIn(\"{{$randomAdjective}}\"));"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				},
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
+							"const xml2js = require('xml2js');\r",
+							"let responseData;\r",
+							"xml2js.parseString(pm.response.text(),{explicitArray: false}, (err, result)=>{\r",
+							"    responseData = result;\r",
+							"});\r",
+							"console.log(responseData);\r",
+							"\r",
 							"\r",
 							"pm.test(\"Response status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
-							"const responseData = xml2Json(pm.response.text());\r",
-							"\r",
-							"console.log(responseData);\r",
 							"\r",
 							"var savedEmail = pm.environment.get(\"email\").toLowerCase();\r",
 							"pm.test(\"Check user email=\" + savedEmail, function () {\r",
@@ -41,12 +45,61 @@
 							"    pm.expect(responseEmail).to.eql(savedEmail);\r",
 							"});\r",
 							"\r",
-							"pm.environment.unset(\"name\", pm.variables.replaceIn(\"{{$randomFirstName}} {{$randomLastName}}\"));\r",
-							"pm.environment.unset(\"email\", pm.variables.replaceIn(\"{{$randomUserName}}@example.com\"));\r",
-							"pm.environment.unset(\"task\", pm.variables.replaceIn(\"Task {{$randomInt}}\"));\r",
-							"pm.environment.unset(\"description\", pm.variables.replaceIn(\"{{$randomAdjective}}\"));"
+							"\r",
+							"// удаляем задачу и юзера, прибираем за собой + чистим переменные среды\r",
+							"const deleteUser = {\r",
+							"  url: pm.environment.get(\"baseUrl\") + '/tasks/rest/deleteuser',\r",
+							"  method: 'POST',\r",
+							"  header: {\r",
+							"        'content-type': 'application/json'\r",
+							"    },\r",
+							"  body: {\r",
+							"    mode: 'raw',\r",
+							"    raw: JSON.stringify({\r",
+							"    email: pm.environment.get(\"email\")})\r",
+							"  }\r",
+							"};\r",
+							"\r",
+							"const deleteTask = {\r",
+							"  url: pm.environment.get(\"baseUrl\") + '/tasks/rest/deletetask',\r",
+							"  method: 'POST',\r",
+							"  header: {\r",
+							"        'content-type': 'application/json'\r",
+							"    },\r",
+							"  body: {\r",
+							"    mode: 'raw',\r",
+							"    raw: JSON.stringify({\r",
+							"    email_owner: \"manager@mail.ru\",\r",
+							"    task_id: responseData['SOAP-ENV:Envelope']['SOAP-ENV:Body']['ns1:CreateUserWithTasksResponse']['return']['tasks']['item'][\"_\"]\r",
+							"    })\r",
+							"  }\r",
+							"};\r",
+							"\r",
+							"pm.sendRequest(deleteTask, function (err, res) {\r",
+							"    if (err) {\r",
+							"        console.log(err);\r",
+							"    } else if (res.json().type != \"success\") {\r",
+							"        throw new Error('Task is not deleted, type=success must be in response');\r",
+							"    } else {\r",
+							"        console.log(res.json().message);\r",
+							"        pm.sendRequest(deleteUser, function (err, res) {\r",
+							"            if (err) {\r",
+							"                console.log(err);\r",
+							"            } else {\r",
+							"                console.log(`Пользователь с email ${pm.environment.get(\"email\")} удален`);\r",
+							"                pm.environment.unset(\"name\");\r",
+							"                pm.environment.unset(\"email\");\r",
+							"                pm.environment.unset(\"task\");\r",
+							"                pm.environment.unset(\"description\");        \r",
+							"                }\r",
+							"        });\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
