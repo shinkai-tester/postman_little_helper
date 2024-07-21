@@ -41,14 +41,13 @@ jobs:
       - name: Execute Shop_final collection
         run:
           newman run Shop_final.json -e Shop_environment.json -r htmlextra,cli,allure --reporter-htmlextra-export testResults/htmlreport.html --reporter-allure-export testResults/allure-results > testResults/output.txt
-        continue-on-error: true # Allows the workflow to continue even if this step fails
         
       # Step 6: Upload test results
       - name: Upload test results
         uses: actions/upload-artifact@v4
         if: always() # Ensures this step always runs, regardless of previous step's success or failure
         with:
-          name: testResults
+          name: reports
           path: testResults # Uploads the test results directory as an artifact
 
       # Step 7: Checkout test history
@@ -66,7 +65,7 @@ jobs:
         if: always()
         with:
           gh_pages: gh-pages
-          allure_results: testResults/allure-results
+          allure_results: reports/testResults/allure-results
           allure_report: allure-report
           allure_history: allure-history
 
