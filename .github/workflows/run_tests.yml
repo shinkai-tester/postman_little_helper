@@ -2,8 +2,8 @@ name: Shop API Testing
 
 # Triggers for the workflow: push to main, pull request to main, manual trigger, and scheduled run at midnight UTC
 on:
-  # push:
-  #  branches: [ "main" ]
+  push:
+    branches: [ "main" ]
   # pull_request:
   #  branches: [ "main" ]
   workflow_dispatch:
@@ -40,18 +40,18 @@ jobs:
       # Step 5: Execute Postman collection
       - name: Execute Shop_final collection
         run:
-          newman run Shop_final.json -e Shop_environment.json -r htmlextra,cli,allure --reporter-htmlextra-export testResults/htmlreport.html --reporter-allure-export testResults/allure-results > testResults/output.txt
+          newman run Shop_final.json -e Shop_environment.json -r htmlextra,cli,allure --reporter-htmlextra-export testResults/htmlreport.html --reporter-allure-resultsDir testResults/allure-results > testResults/output.txt
         
       # Step 6: Upload test results
       - name: Upload test results
         uses: actions/upload-artifact@v4
         if: always() # Ensures this step always runs, regardless of previous step's success or failure
         with:
-          name: reports
+          name: Shop_reports
           path: testResults # Uploads the test results directory as an artifact
 
       # Step 7: Checkout test history
-      - name: Get Allure history
+      - name: Checkout test history
         uses: actions/checkout@v4
         if: always()
         continue-on-error: true
@@ -65,7 +65,7 @@ jobs:
         if: always()
         with:
           gh_pages: gh-pages
-          allure_results: reports/testResults/allure-results
+          allure_results: testResults/allure-results
           allure_report: allure-report
           allure_history: allure-history
 
@@ -76,4 +76,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }} # Uses the GitHub token to authenticate and publish to GitHub Pages
           PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: allure-history # Specifies the directory from which GitHub Pages should serve the site
+          PUBLISH_DIR: allure-report # Specifies the directory from which GitHub Pages should serve the site
