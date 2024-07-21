@@ -1,0 +1,9 @@
+{
+    "Server": "nginx/1.18.0",
+    "Date": "Sun, 21 Jul 2024 01:55:24 GMT",
+    "Content-Type": "application/json; charset=UTF-8",
+    "Transfer-Encoding": "chunked",
+    "Connection": "keep-alive",
+    "X-Powered-By": "PHP/7.3.33",
+    "Content-Encoding": "gzip"
+}
