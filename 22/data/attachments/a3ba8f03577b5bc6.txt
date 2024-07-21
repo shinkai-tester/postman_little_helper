@@ -1,0 +1,1 @@
+{"method":"/items/create","status":"ok","result":{"id":"770","name":"Car","section":"＼(〇_ｏ)／","description":"4wu*s!Z&lwkXqOvn0§Ya-0_7§SVSXV!hvfdZF!QB)O+VHG~dy$%Sq)F)Dp_x3yx<","size":"42","color":"Синий","price":643,"params":""}}
