@@ -1,0 +1,5 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Mon Jul 22 09:56:38 GMT 2024","Mon Jul 22 09:56:40 GMT 2024","2041","","","","","","Test search with creating and deleting data",""
+"passed","Mon Jul 22 09:56:37 GMT 2024","Mon Jul 22 09:56:38 GMT 2024","804","","","","","","Create new item",""
+"passed","Mon Jul 22 09:56:38 GMT 2024","Mon Jul 22 09:56:38 GMT 2024","287","","","","","","Update item",""
+"passed","Mon Jul 22 09:56:38 GMT 2024","Mon Jul 22 09:56:38 GMT 2024","143","","","","","","Delete item",""

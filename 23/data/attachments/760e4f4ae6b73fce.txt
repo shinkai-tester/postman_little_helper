@@ -1,0 +1,1 @@
+{"method":"/items/update","status":"ok","result":{"id":"106","name":"Ball","section":"＼(〇_ｏ)／","description":"Rustic","color":"RED","size":"44","price":1659,"params":"","photo":"http://shop.bugred.ruhttps://via.placeholder.com/300x300"}}
