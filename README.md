@@ -11,11 +11,7 @@
    Если у вас нет аккаунта в Postman, пожалуйста, создайте его.
 
 
-2. **Node.js**
-
-   Установите Node.js по [ссылке](https://nodejs.org/en/download/prebuilt-binaries).
-
-3. **Коллекции и окружения**
+2. **Коллекции и окружения**
 
    Все коллекции и окружения, которые будут показаны на мастер-классе, доступны по ссылке: https://www.postman.com/shurka-tester/workspace/masterclass-data/overview
    
