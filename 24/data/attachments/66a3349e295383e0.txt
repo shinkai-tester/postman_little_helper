@@ -1,0 +1,1 @@
+{"method":"/items/create","status":"ok","result":{"id":"445","name":"Chair","section":"＼(〇_ｏ)／","description":"wWZYb4tx@i%JzkhYOw3jbuw@W#Q5iQiBew+B@aI)Tj46X$W31U8S+-.(mAKFEu7h","size":"42","color":"Фиолетовый","price":6715,"params":""}}

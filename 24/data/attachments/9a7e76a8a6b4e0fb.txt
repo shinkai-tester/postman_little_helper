@@ -1,0 +1,1 @@
+{"method":"/items/update","status":"ok","result":{"id":"445","name":"Chips","section":"＼(〇_ｏ)／","description":"Sleek","color":"Фиолетовый","size":"44","price":6715,"params":"","photo":"http://shop.bugred.ruhttps://via.placeholder.com/300x300"}}
