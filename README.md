@@ -2,8 +2,6 @@
 
 ## Предварительные требования
 
-### Подготовительные шаги
-
 1. **Postman  :rocket:**
 
    Установите Postman, если у вас его ещё нет. Скачать можно здесь:
@@ -13,14 +11,9 @@
    Если у вас нет аккаунта в Postman, пожалуйста, создайте его.
 
 
-2. **Docker :whale:**
+2. **Node.js**
 
-   Docker необходим для запуска локального сервера gRPC. Установите Docker, следуя этим инструкциям:
-   
-   - [Скачать Docker Desktop](https://www.docker.com/products/docker-desktop/)
-   - [Установка Docker Desktop на Windows](https://docs.docker.com/desktop/install/windows-install/)
-   - [Установка Docker Desktop на Mac](https://docs.docker.com/desktop/install/mac-install/)
-   - [Установка Docker Desktop на Linux](https://docs.docker.com/desktop/install/linux-install/)
+   Установите Node.js по [ссылке](https://nodejs.org/en/download/prebuilt-binaries).
 
 3. **Коллекции и окружения**
 
@@ -95,15 +88,14 @@ WebSocket API BitMEX обеспечивает потоковые данные в
 
 ### gRPC :arrows_counterclockwise:
 
-// Надо доработать
+gRPC API, представленный в репозитории [shinkai-tester/gRPCServer](https://github.com/shinkai-tester/gRPCServer), предназначен для управления данными пользователей. Он позволяет выполнять операции по добавлению, поиску, обновлению и удалению пользователей. API поддерживает следующие методы:
 
-- **Запуск gRPC сервера** — используйте следующую команду:
-```bash
-docker run -it --rm -p 9000:9000 -p 9001:9001 moul/grpcbin
-```
+- **AddPerson**: добавление нового пользователя.
+- **FindPersonByName**: поиск пользователя по имени.
+- **FindPersonById**: поиск пользователя по идентификатору.
+- **UpdatePerson**: обновление информации о пользователе.
+- **DeletePerson**: удаление пользователя из системы.
 
+Для получения инструкций по настройке и запуску сервиса, ознакомьтесь с [README.md](https://github.com/shinkai-tester/gRPCServer/blob/main/README.md).
 
-Сервис будет доступен по адресам `grpc://localhost:9001` и `grpc://localhost:9000` (без TLS, незащищенное соединение).
-
-Подробности о сервисе: [GitHub grpcbin](https://github.com/moul/grpcbin), альтернатива: [GitHub k6-grpcbin](https://github.com/grafana/k6-grpcbin).
 
