@@ -1,0 +1,1 @@
+{"method":"/items/update","status":"ok","result":{"id":"171","name":"Pizza","section":"Брюки","description":"Generic","color":"Коричневый","size":"44","price":336,"params":"","photo":"http://shop.bugred.ruhttps://via.placeholder.com/300x300"}}

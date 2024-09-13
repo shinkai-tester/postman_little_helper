@@ -1,0 +1,1 @@
+{"method":"/items/delete","status":"ok","result":"Товар с ID 171 успешно удален"}

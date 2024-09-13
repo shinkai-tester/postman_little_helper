@@ -1,0 +1,1 @@
+{"method":"/items/create","status":"ok","result":{"id":"171","name":"Fish","section":"Брюки","description":"$3ZK>3L2aF_yLHf95g0Df§Z1IW(H1w.K~d0d3§W9NBF+b<B)bQ@j$w<%rD0ZbSXW","size":"42","color":"Коричневый","price":336,"params":""}}
