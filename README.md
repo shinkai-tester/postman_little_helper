@@ -1,5 +1,7 @@
 # Postman: легкий старт в автоматизации тестирования API
 
+![Build Status](https://github.com/shinkai-tester/postman_little_helper/actions/workflows/run_tests.yml/badge.svg)
+
 ## Предварительные требования
 
 1. **Postman  :rocket:**
