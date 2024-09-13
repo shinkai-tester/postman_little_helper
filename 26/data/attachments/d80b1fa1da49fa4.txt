@@ -1,0 +1,8 @@
+{
+    "name": "Tuna",
+    "section": "Платья",
+    "description": "p@@X7EYjm%!vI4i2xXo8#7qd7z>pVR-ab1Er_~sTk_rog5tG§7TiZ!D1SZ)_tLyI",
+    "color": "ORANGE",
+    "size": "42",
+    "price": "8945"
+}

@@ -1,0 +1,1 @@
+{"method":"/items/update","status":"ok","result":{"id":"152","name":"Chips","section":"Платья","description":"Tasty","color":"ORANGE","size":"44","price":8945,"params":"","photo":"http://shop.bugred.ruhttps://via.placeholder.com/300x300"}}

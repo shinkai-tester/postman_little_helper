@@ -1,0 +1,1 @@
+{"method":"/items/create","status":"ok","result":{"id":"152","name":"Tuna","section":"Платья","description":"p@@X7EYjm%!vI4i2xXo8#7qd7z>pVR-ab1Er_~sTk_rog5tG§7TiZ!D1SZ)_tLyI","size":"42","color":"ORANGE","price":8945,"params":""}}
