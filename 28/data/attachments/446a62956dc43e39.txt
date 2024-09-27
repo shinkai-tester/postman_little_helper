@@ -1,0 +1,8 @@
+{
+    "name": "Chips",
+    "section": "Платья",
+    "description": "jUvtsOn%X96QiuSQ#p$phyfb6~K4lD~~+1_9-_.azCC!VE@§§C_DCYclQ4iN-_v7",
+    "color": "Синий",
+    "size": "42",
+    "price": "740"
+}

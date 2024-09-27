@@ -1,0 +1,1 @@
+{"method":"/items/update","status":"ok","result":{"id":"137","name":"Shoes","section":"Платья","description":"Licensed","color":"Синий","size":"44","price":740,"params":"","photo":"http://shop.bugred.ruhttps://via.placeholder.com/300x300"}}

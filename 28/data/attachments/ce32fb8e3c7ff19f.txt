@@ -1,0 +1,1 @@
+{"method":"/items/create","status":"ok","result":{"id":"137","name":"Chips","section":"Платья","description":"jUvtsOn%X96QiuSQ#p$phyfb6~K4lD~~+1_9-_.azCC!VE@§§C_DCYclQ4iN-_v7","size":"42","color":"Синий","price":740,"params":""}}
