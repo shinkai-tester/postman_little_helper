@@ -1,0 +1,1 @@
+{"method":"/items/create","status":"ok","result":{"id":"108","name":"Towels","section":"Шорты","description":"Z8>kLkX>oH-8R1P<eTupNsjK81<#§>7-ar5silp_FbgRO8y9O$BP#3YUB9Qwmm§V","size":"42","color":"Фиолетовый","price":9787,"params":""}}

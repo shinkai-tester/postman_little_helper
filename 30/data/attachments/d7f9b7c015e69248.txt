@@ -1,0 +1,8 @@
+{
+    "name": "Towels",
+    "section": "Шорты",
+    "description": "Z8>kLkX>oH-8R1P<eTupNsjK81<#§>7-ar5silp_FbgRO8y9O$BP#3YUB9Qwmm§V",
+    "color": "Фиолетовый",
+    "size": "42",
+    "price": "9787"
+}
