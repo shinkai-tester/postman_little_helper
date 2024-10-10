@@ -1,0 +1,8 @@
+{
+    "name": "Bike",
+    "section": "Брюки",
+    "description": "*>c§2W>qLcc&s)MI~dZ~X!zFQXo1>aoW+B0!l.CBy1txE*4gi+um&>ieBs&-$e5Q",
+    "color": "Синий",
+    "size": "42",
+    "price": "5751"
+}

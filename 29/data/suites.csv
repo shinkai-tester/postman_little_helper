@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Thu Oct 10 02:02:41 GMT 2024","Thu Oct 10 02:02:42 GMT 2024","894","01_Shop","","","","","Create new item",""
+"passed","Thu Oct 10 02:02:42 GMT 2024","Thu Oct 10 02:02:43 GMT 2024","214","01_Shop","","","","","Delete item",""
+"passed","Thu Oct 10 02:02:42 GMT 2024","Thu Oct 10 02:02:42 GMT 2024","455","01_Shop","","","","","Update item",""
